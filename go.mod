@@ -2,9 +2,10 @@ module github.com/zachdehooge/GO-SAST-Scanner
 
 go 1.23.2
 
+require github.com/charmbracelet/lipgloss v0.13.0
+
 require (
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
-	github.com/charmbracelet/lipgloss v0.13.0 // indirect
 	github.com/charmbracelet/x/ansi v0.1.4 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
