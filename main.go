@@ -45,7 +45,42 @@ func goSecDependency() {
 	}
 }
 
+func isSnykInstalled() bool {
+	cmd := exec.Command("which", "snyk")
+	err := cmd.Run()
+	return err == nil
+}
+
+// installGoSec installs GoSec using the Go install command
+func installSnyk() error {
+	// Command to install gosec
+	cmd := exec.Command("npm", "install", "snyk", "-g")
+	cmd.Stdout = exec.Command("tee").Stdout // Redirect output to stdout
+	cmd.Stderr = exec.Command("tee").Stderr // Redirect error to stderr
+
+	// Execute the command
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("error installing Snyk: %v, output: %s", err, output)
+	}
+	return nil
+}
+
+func snykDependency() {
+	if !isSnykInstalled() {
+		fmt.Println("Snyk is not installed. Installing...\n")
+
+		// Install gosec
+		if err := installSnyk(); err != nil {
+			log.Fatalf("Failed to install Snyk: %s", err)
+		}
+
+		fmt.Println("Snyk has been installed successfully.")
+	}
+}
+
 func main() {
 	goSecDependency()
+	snykDependency()
 	cmd.Execute()
 }
