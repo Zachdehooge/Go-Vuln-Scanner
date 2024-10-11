@@ -1,5 +1,5 @@
 # GO-SAST-Scanner
-- An application to faciliate the SAST scanning of Golang applications against the gosec and snyk
+- An application to faciliate the SAST scanning of Golang applications against gosec and snyk
 
 ## Installation
 - `go install github.com/zachdehooge/GO-SAST-Scanner`
