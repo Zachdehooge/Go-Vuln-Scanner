@@ -8,6 +8,7 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/charmbracelet/lipgloss"
 	"github.com/spf13/cobra"
 )
 
@@ -17,15 +18,26 @@ var snykCmd = &cobra.Command{
 	Short: "Runs a snyk vulnerability scan on the project",
 	Long:  `Runs a snyk vulnerability scan on the project`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("\nRUNNING SNYK SCAN...")
 
-		gosec := exec.Command("snyk", "test")
-		output, err := gosec.Output()
+		style := lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#FAFAFA")). // Text color
+			Background(lipgloss.Color("#1D3557")). // Background color
+			Padding(1).
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("#A8DADC"))
+
+		snyk := exec.Command("snyk", "test")
+		output, err := snyk.Output()
 		if err != nil {
 			log.Fatalf("Error executing command: %s", err)
 		}
 
-		fmt.Println(string(output))
+		cmdOutput := string(output)
+
+		styledCommand := style.Render("Snyk Scan\n" + cmdOutput)
+
+		// Print the styled output
+		fmt.Println(styledCommand)
 	},
 }
 

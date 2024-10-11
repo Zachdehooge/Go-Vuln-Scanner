@@ -4,3 +4,5 @@
 - Install the latest version of Snyk `npm install snyk -g`
 - Use `Snyk auth`
 - Now you can use the `GO-SAST-Scanner snyk` command
+
+![SAST OUTPUT](SAST_OUTPUT.png)

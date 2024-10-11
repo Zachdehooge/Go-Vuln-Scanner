@@ -8,30 +8,43 @@ import (
 	"log"
 	"os/exec"
 
+	"github.com/charmbracelet/lipgloss"
 	"github.com/spf13/cobra"
 )
 
 // gosecCmd represents the gosec command
-var gosecCmd = &cobra.Command{
+var scanCMD = &cobra.Command{
 	Use:   "gosec",
 	Short: "gosecs the current project directory using the gosec command to find application vulnerabilities locally",
 	Long:  `gosecs the current project directory using the gosec command to find application vulnerabilities locally`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("\nRUNNING GOSEC SCAN...")
 
-		gosec := exec.Command("gosec", ".")
-		output, err := gosec.Output()
+		style := lipgloss.NewStyle().
+			Foreground(lipgloss.Color("#FAFAFA")). // Text color
+			Background(lipgloss.Color("#1D3557")). // Background color
+			Padding(1).
+			Border(lipgloss.RoundedBorder()).
+			BorderForeground(lipgloss.Color("#A8DADC"))
+
+		scan := exec.Command("gosec", ".")
+		output, err := scan.Output()
 		if err != nil {
 			log.Fatalf("Error executing command: %s", err)
 		}
 
-		fmt.Println(string(output))
+		cmdOutput := string(output)
+
+		styledCommand := style.Render("Gosec Scan\n\n" + cmdOutput)
+
+		// Print the styled output
+		fmt.Println(styledCommand)
+
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(gosecCmd)
+	rootCmd.AddCommand(scanCMD)
 
 	// Here you will define your flags and configuration settings.
 
