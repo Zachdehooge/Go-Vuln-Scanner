@@ -8,7 +8,7 @@ import (
 	"log"
 	"os/exec"
 
-	"github.com/zachdehooge/GO-SAST-Scanner/cmd"
+	"github.com/zachdehooge/Go-Vuln-Scanner/cmd"
 )
 
 func isGoSecInstalled() bool {

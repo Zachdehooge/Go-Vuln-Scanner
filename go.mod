@@ -1,4 +1,4 @@
-module github.com/zachdehooge/GO-SAST-Scanner
+module github.com/zachdehooge/Go-Vuln-Scanner
 
 go 1.23.2
 

@@ -1,4 +1,4 @@
-go install github.com/zachdehooge/GO-SAST-Scanner
+go install github.com/zachdehooge/Go-Vuln-Scanner
 
 sleep 2
 
