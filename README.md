@@ -1,4 +1,5 @@
 # GO-SAST-Scanner
+[![CI/CD Pipeline](https://github.com/Zachdehooge/GO-SAST-Scanner/actions/workflows/ci.yml/badge.svg)](https://github.com/Zachdehooge/GO-SAST-Scanner/actions/workflows/ci.yml)
 - An application to faciliate the SAST scanning of Golang applications against gosec and snyk
 
 ## Installation
