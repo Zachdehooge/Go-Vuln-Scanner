@@ -15,8 +15,8 @@ import (
 // gosecCmd represents the gosec command
 var scanCMD = &cobra.Command{
 	Use:   "gosec",
-	Short: "gosecs the current project directory using the gosec command to find application vulnerabilities locally",
-	Long:  `gosecs the current project directory using the gosec command to find application vulnerabilities locally`,
+	Short: "Esecutes gosec on the current project directory using the gosec command to find application vulnerabilities locally",
+	Long:  `Esecutes gosec on the current project directory using the gosec command to find application vulnerabilities locally`,
 
 	Run: func(cmd *cobra.Command, args []string) {
 
